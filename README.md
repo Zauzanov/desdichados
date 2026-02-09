@@ -120,3 +120,10 @@ objdump -M intel -D a.exe | grep -A20 main.:
    140001588:   90                      nop
    140001589:   90                      nop
 ```
+## 6. GNU Debugger (GDB):
+For Windows (MSYS2/MinGW):
+```bash
+pacman -S mingw-w64-x86_64-gdb
+# or for UCRT64
+pacman -S mingw-w64-ucrt-x86_64-gdb
+```
