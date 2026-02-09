@@ -127,3 +127,43 @@ pacman -S mingw-w64-x86_64-gdb
 # or for UCRT64
 pacman -S mingw-w64-ucrt-x86_64-gdb
 ```
+## 7. Check the process registers using GNU Debugger:
+```bash
+gdb -q ./a.exe
+Reading symbols from ./a.exe...
+(gdb) break main
+Breakpoint 1 at 0x14000145d
+(gdb) run
+Starting program: C:\Users\user\Desktop\a.exe 
+[New Thread 12256.0x3448]
+
+Thread 1 hit Breakpoint 1, 0x00007ff65460145d in main ()
+(gdb) info registers
+rax            0x1                 1
+rbx            0x7ff654607040      140695954288704
+rcx            0x1                 1
+rdx            0x797d90            7962000        
+rsi            0x1                 1
+rdi            0x1d                29
+rbp            0x5ffe50            0x5ffe50       
+rsp            0x5ffe20            0x5ffe20       
+r8             0x79a440            7971904        
+r9             0x797a88            7961224        
+r10            0xd7ebb9b76a75      237407433091701
+r11            0x797a80            7961216
+--Type <RET> for more, q to quit, c to continue without paging--q
+Quit  
+(gdb) quit 
+A debugging session is active.
+
+        Inferior 1 [process 12256] will be killed.
+
+Quit anyway? (y or n) y
+```
+We see:
+```
+RAX (Accumulator): Used for arithmetic operations, storing function return values, and I/O.
+RBX (Base Register): Often used as a pointer to data.
+RCX (Counter Register): Used for loops and shift instructions (specifically cl for variable shifts).
+RDX (Data Register): Used in I/O, multiplication, and division (holds remainders)
+```
